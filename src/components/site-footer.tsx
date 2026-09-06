@@ -1,9 +1,17 @@
+import { Link } from "@tanstack/react-router";
+
 const WHATSAPP = "573022409193";
 
 export function SiteFooter() {
   return (
     <footer className="w-full bg-brand-navy py-10 text-center text-white">
       <p className="font-heading text-lg font-bold">Piwistore © 2025 · Hecho con amor en Colombia 🇨🇴</p>
+      <Link
+        to="/terminos"
+        className="mt-2 inline-block text-sm text-white/80 underline-offset-2 hover:underline"
+      >
+        Términos y Condiciones
+      </Link>
       <div className="mt-4 flex items-center justify-center gap-4">
         <a
           href="https://www.facebook.com/profile.php?id=61579222033810"
