@@ -112,7 +112,7 @@ function Productos() {
                   )}
                 </div>
                 <div className="p-5">
-                  <h3 className="font-heading text-lg font-bold text-foreground">
+                  <h3 className="min-h-[3.5rem] font-heading text-lg font-bold text-foreground">
                     {p.name}
                   </h3>
                   <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.description}</p>

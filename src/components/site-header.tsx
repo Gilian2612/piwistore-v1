@@ -86,7 +86,7 @@ export function SiteHeader() {
               href={`https://wa.me/${WHATSAPP}?text=Hola%2C%20quiero%20hacer%20un%20pedido%20%F0%9F%90%A7`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-penguin-blue text-sm"
+              className="btn-penguin-blue px-3 text-sm"
             >
               🐧 Pedir ahora
             </a>
@@ -94,7 +94,7 @@ export function SiteHeader() {
               href={`https://wa.me/${WHATSAPP}?text=Hola%2C%20tengo%20una%20pregunta`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline-blue text-sm"
+              className="btn-outline-blue px-2.5 text-sm"
             >
               Contacto
             </a>
