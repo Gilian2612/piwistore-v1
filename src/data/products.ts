@@ -65,9 +65,9 @@ export const PRODUCTS: Product[] = [
       "Fácil de desmontar y limpiar",
       "Perfecto para patas sucias",
     ],
-    price: 79900,
+    price: 59900,
     waLink:
-      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Limpiador%20de%20Patas%20El%C3%A9ctrico%20%F0%9F%90%BE%20Precio%3A%20%2479.900",
+      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Limpiador%20de%20Patas%20El%C3%A9ctrico%20%F0%9F%90%BE%20Precio%3A%20%2459.900",
     images: [lavapatasImg1, lavapatasImg2, lavapatasImg3],
   },
   {
