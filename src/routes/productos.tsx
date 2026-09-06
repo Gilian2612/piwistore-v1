@@ -2,6 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ProductImageCarousel, type CarouselImage } from "@/components/product-image-carousel";
+import fuenteImg1 from "@/assets/material visual/PRODUCTOS/01/fuente1.jpeg";
+import fuenteImg2 from "@/assets/material visual/PRODUCTOS/01/fuente2.jpeg";
+import fuenteImg3 from "@/assets/material visual/PRODUCTOS/01/fuente3.jpeg";
+import fuenteImg4 from "@/assets/material visual/PRODUCTOS/01/fuente4.jpeg";
+import fuenteImg5 from "@/assets/material visual/PRODUCTOS/01/bebdero_imagen.png";
 
 const WHATSAPP = "573022409193";
 
@@ -13,6 +19,7 @@ type Product = {
   features: string[];
   price: number;
   waLink: string;
+  images?: CarouselImage[];
 };
 
 const PRODUCTS: Product[] = [
@@ -32,6 +39,7 @@ const PRODUCTS: Product[] = [
     price: 79900,
     waLink:
       "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Fuente%20Autom%C3%A1tica%20de%20Agua%20para%20Mascotas%20%F0%9F%90%BE%20Precio%3A%20%2479.900",
+    images: [fuenteImg1, fuenteImg2, fuenteImg3, fuenteImg4, { src: fuenteImg5, position: "top" }],
   },
   {
     id: "limpiador",
@@ -154,28 +162,32 @@ function Productos() {
           <div className="mt-10 grid grid-cols-1 place-items-center gap-8 md:grid-cols-3">
             {PRODUCTS.map((p) => (
               <article key={p.id} className="product-card">
-                <div className="flex aspect-square items-center justify-center bg-secondary px-6 text-center">
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {p.name}
-                  </span>
-                </div>
+                {p.images ? (
+                  <ProductImageCarousel images={p.images} alt={p.name} />
+                ) : (
+                  <div className="flex aspect-square items-center justify-center bg-secondary px-6 text-center">
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {p.name}
+                    </span>
+                  </div>
+                )}
                 <div className="p-5">
                   <h3 className="font-heading text-lg font-bold text-foreground">
                     {p.name}
                   </h3>
                   <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.description}</p>
-                  <p className="mt-3 font-heading text-[22px] font-bold text-primary">
+                  <p className="mt-3 font-heading text-[22px] font-bold text-foreground">
                     {formatCOP(p.price)} COP
                   </p>
                   <div className="mt-4 space-y-2">
                     <button
                       onClick={() => setSelectedProduct(p)}
-                      className="btn-outline-red w-full text-sm"
+                      className="btn-outline-blue w-full text-sm"
                     >
                       👁 Ver detalles
                     </button>
                     <div className="grid grid-cols-2 gap-2">
-                      <button onClick={() => addToCart(p)} className="btn-outline-red text-sm">
+                      <button onClick={() => addToCart(p)} className="btn-outline-blue text-sm">
                         🛒 Agregar
                       </button>
                       <a
@@ -258,7 +270,7 @@ function Productos() {
                     <p className="text-sm font-semibold text-foreground">
                       {item.product.shortName} {item.qty > 1 && `x${item.qty}`}
                     </p>
-                    <p className="mt-1 font-heading text-sm font-bold text-primary">
+                    <p className="mt-1 font-heading text-sm font-bold text-foreground">
                       {formatCOP(item.product.price * item.qty)} COP
                     </p>
                   </div>
@@ -318,14 +330,22 @@ function Productos() {
             >
               ✕
             </button>
-            <div className="flex aspect-square items-center justify-center rounded-xl bg-secondary px-6 text-center">
-              <span className="text-sm font-medium text-muted-foreground">{selectedProduct.name}</span>
-            </div>
+            {selectedProduct.images ? (
+              <ProductImageCarousel
+                images={selectedProduct.images}
+                alt={selectedProduct.name}
+                className="rounded-xl"
+              />
+            ) : (
+              <div className="flex aspect-square items-center justify-center rounded-xl bg-secondary px-6 text-center">
+                <span className="text-sm font-medium text-muted-foreground">{selectedProduct.name}</span>
+              </div>
+            )}
             <div className="mt-5">
               <h3 id="modal-title" className="font-heading text-2xl font-bold text-foreground">
                 {selectedProduct.name}
               </h3>
-              <p className="mt-3 font-heading text-3xl font-bold text-primary">
+              <p className="mt-3 font-heading text-3xl font-bold text-foreground">
                 {formatCOP(selectedProduct.price)} COP
               </p>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
@@ -338,7 +358,7 @@ function Productos() {
                   onClick={() => {
                     addToCart(selectedProduct);
                   }}
-                  className="btn-outline-red text-sm"
+                  className="btn-outline-blue text-sm"
                 >
                   🛒 Agregar
                 </button>

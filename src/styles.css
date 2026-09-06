@@ -182,6 +182,23 @@
   .btn-outline-red:hover {
     background-color: color-mix(in oklch, var(--brand-red) 8%, white);
   }
+  .btn-outline-blue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    color: var(--brand-penguin-blue);
+    border: 2px solid var(--brand-penguin-blue);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.625rem 1rem;
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+  }
+  .btn-outline-blue:hover {
+    background-color: color-mix(in oklch, var(--brand-penguin-blue) 8%, white);
+  }
   .btn-whatsapp {
     display: inline-flex;
     align-items: center;

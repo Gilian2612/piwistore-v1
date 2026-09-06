@@ -94,7 +94,7 @@ export function SiteHeader() {
               href={`https://wa.me/${WHATSAPP}?text=Hola%2C%20tengo%20una%20pregunta`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline-red text-sm"
+              className="btn-outline-blue text-sm"
             >
               Contacto
             </a>
