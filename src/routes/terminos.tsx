@@ -25,7 +25,7 @@ function Terminos() {
           Términos y Condiciones
         </h1>
         <p className="mb-8 mt-1 text-sm text-muted-foreground">
-          Última actualización: junio de 2025 — Piwistore
+          Última actualización: Septiembre 2026 — Piwistore
         </p>
 
         <p className="text-[15px]">
@@ -90,7 +90,7 @@ function Terminos() {
             zona de despacho. El pago se realiza al momento de recibir el producto.
           </li>
         </ul>
-        <div className="my-4 rounded-r-lg border-l-4 border-brand-red bg-brand-ice px-4 py-3 text-[15px]">
+        <div className="my-4 rounded-r-lg border-l-4 border-brand-black bg-brand-ice px-4 py-3 text-[15px]">
           El método de pago disponible para cada pedido se confirma por WhatsApp antes de
           procesar el envío.
         </div>

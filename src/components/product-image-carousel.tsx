@@ -1,21 +1,30 @@
 import { useState } from "react";
 
-export type CarouselImage = string | { src: string; position?: string };
+export type CarouselImage =
+  | string
+  | { src: string; position?: string; type?: "image" }
+  | { src: string; type: "video" };
 
 function normalize(image: CarouselImage) {
-  return typeof image === "string"
-    ? { src: image, position: "center" }
-    : { src: image.src, position: image.position ?? "center" };
+  if (typeof image === "string") {
+    return { src: image, position: "center", isVideo: false };
+  }
+  if (image.type === "video") {
+    return { src: image.src, position: "center", isVideo: true };
+  }
+  return { src: image.src, position: image.position ?? "center", isVideo: false };
 }
 
 export function ProductImageCarousel({
   images,
   alt,
   className = "",
+  fit = "cover",
 }: {
   images: CarouselImage[];
   alt: string;
   className?: string;
+  fit?: "cover" | "contain";
 }) {
   const [index, setIndex] = useState(0);
 
@@ -26,12 +35,25 @@ export function ProductImageCarousel({
 
   return (
     <div className={`relative aspect-square overflow-hidden bg-secondary ${className}`}>
-      <img
-        src={current.src}
-        alt={alt}
-        className="h-full w-full object-cover"
-        style={{ objectPosition: current.position }}
-      />
+      {current.isVideo ? (
+        <video
+          src={current.src}
+          className={`h-full w-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+          style={{ objectPosition: current.position }}
+          controls
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : (
+        <img
+          src={current.src}
+          alt={alt}
+          className={`h-full w-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+          style={{ objectPosition: current.position }}
+        />
+      )}
       {images.length > 1 && (
         <>
           <button

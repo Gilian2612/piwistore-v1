@@ -5,7 +5,7 @@ const WHATSAPP = "573022409193";
 export function SiteFooter() {
   return (
     <footer className="w-full bg-brand-navy py-10 text-center text-white">
-      <p className="font-heading text-lg font-bold">Piwistore © 2025 · Hecho con amor en Colombia 🇨🇴</p>
+      <p className="font-heading text-lg font-bold">Piwistore © 2025 · Hecho con amor 🇨🇴</p>
       <Link
         to="/terminos"
         className="mt-2 inline-block text-sm text-white/80 underline-offset-2 hover:underline"

@@ -10,17 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProductosRouteImport } from './routes/productos'
 import { Route as TerminosRouteImport } from './routes/terminos'
+import { Route as ProductosIndexRouteImport } from './routes/productos/index'
+import { Route as ProductosProductIdRouteImport } from './routes/productos/$productId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductosRoute = ProductosRouteImport.update({
-  id: '/productos',
-  path: '/productos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TerminosRoute = TerminosRouteImport.update({
@@ -28,35 +24,49 @@ const TerminosRoute = TerminosRouteImport.update({
   path: '/terminos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductosIndexRoute = ProductosIndexRouteImport.update({
+  id: '/productos/',
+  path: '/productos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductosProductIdRoute = ProductosProductIdRouteImport.update({
+  id: '/productos/$productId',
+  path: '/productos/$productId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/productos': typeof ProductosRoute
   '/terminos': typeof TerminosRoute
+  '/productos/$productId': typeof ProductosProductIdRoute
+  '/productos/': typeof ProductosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/productos': typeof ProductosRoute
   '/terminos': typeof TerminosRoute
+  '/productos/$productId': typeof ProductosProductIdRoute
+  '/productos': typeof ProductosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/productos': typeof ProductosRoute
   '/terminos': typeof TerminosRoute
+  '/productos/$productId': typeof ProductosProductIdRoute
+  '/productos/': typeof ProductosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/productos' | '/terminos'
+  fullPaths: '/' | '/terminos' | '/productos/$productId' | '/productos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/productos' | '/terminos'
-  id: '__root__' | '/' | '/productos' | '/terminos'
+  to: '/' | '/terminos' | '/productos/$productId' | '/productos'
+  id: '__root__' | '/' | '/terminos' | '/productos/$productId' | '/productos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProductosRoute: typeof ProductosRoute
   TerminosRoute: typeof TerminosRoute
+  ProductosProductIdRoute: typeof ProductosProductIdRoute
+  ProductosIndexRoute: typeof ProductosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,13 +78,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/productos': {
-      id: '/productos'
-      path: '/productos'
-      fullPath: '/productos'
-      preLoaderRoute: typeof ProductosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/terminos': {
       id: '/terminos'
       path: '/terminos'
@@ -82,13 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/productos/': {
+      id: '/productos/'
+      path: '/productos'
+      fullPath: '/productos/'
+      preLoaderRoute: typeof ProductosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productos/$productId': {
+      id: '/productos/$productId'
+      path: '/productos/$productId'
+      fullPath: '/productos/$productId'
+      preLoaderRoute: typeof ProductosProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProductosRoute: ProductosRoute,
   TerminosRoute: TerminosRoute,
+  ProductosProductIdRoute: ProductosProductIdRoute,
+  ProductosIndexRoute: ProductosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

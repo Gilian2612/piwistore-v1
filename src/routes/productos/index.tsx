@@ -1,87 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { ProductImageCarousel, type CarouselImage } from "@/components/product-image-carousel";
-import fuenteImg1 from "@/assets/material visual/PRODUCTOS/01/fuente1.jpeg";
-import fuenteImg2 from "@/assets/material visual/PRODUCTOS/01/fuente2.jpeg";
-import fuenteImg3 from "@/assets/material visual/PRODUCTOS/01/fuente3.jpeg";
-import fuenteImg4 from "@/assets/material visual/PRODUCTOS/01/fuente4.jpeg";
-import fuenteImg5 from "@/assets/material visual/PRODUCTOS/01/bebdero_imagen.png";
-
-const WHATSAPP = "573022409193";
-
-type Product = {
-  id: string;
-  name: string;
-  shortName: string;
-  description: string;
-  features: string[];
-  price: number;
-  waLink: string;
-  images?: CarouselImage[];
-};
-
-const PRODUCTS: Product[] = [
-  {
-    id: "fuente",
-    name: "Fuente Automática de Agua para Mascotas",
-    shortName: "Fuente de Agua",
-    description:
-      "3 modos de flujo · Sistema de circulación · Material ABS libre de BPA · Silenciosa y fácil de limpiar",
-    features: [
-      "3 modos de flujo ajustables",
-      "Sistema de circulación de agua fresca",
-      "Material ABS libre de BPA",
-      "Silenciosa y fácil de limpiar",
-      "Ideal para gatos y perros",
-    ],
-    price: 79900,
-    waLink:
-      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Fuente%20Autom%C3%A1tica%20de%20Agua%20para%20Mascotas%20%F0%9F%90%BE%20Precio%3A%20%2479.900",
-    images: [fuenteImg1, fuenteImg2, fuenteImg3, fuenteImg4, { src: fuenteImg5, position: "top" }],
-  },
-  {
-    id: "limpiador",
-    name: "Limpiador de Patas Eléctrico",
-    shortName: "Limpiador de Patas",
-    description:
-      "2 velocidades · Cerdas de silicona suaves · Batería 2000mAh recargable · Fácil de desmontar y limpiar",
-    features: [
-      "2 velocidades potentes",
-      "Cerdas de silicona suaves",
-      "Batería 2000mAh recargable",
-      "Fácil de desmontar y limpiar",
-      "Perfecto para patas sucias",
-    ],
-    price: 79900,
-    waLink:
-      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Limpiador%20de%20Patas%20El%C3%A9ctrico%20%F0%9F%90%BE%20Precio%3A%20%2479.900",
-  },
-  {
-    id: "cama",
-    name: "Nube de Sueños · Cama para Mascota",
-    shortName: "Cama Nube de Sueños",
-    description:
-      "Pelo sintético ultrasuave · Borde elevado para cabeza y cuello · Base antideslizante · 50cm diámetro",
-    features: [
-      "Pelo sintético ultrasuave",
-      "Borde elevado para cabeza y cuello",
-      "Base antideslizante",
-      "50cm de diámetro",
-      "Descanso cómodo y seguro",
-    ],
-    price: 69900,
-    waLink:
-      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Nube%20de%20Sue%C3%B1os%20Cama%20para%20Mascota%20%F0%9F%90%BE%20Precio%3A%20%2469.900",
-  },
-];
+import { ProductImageCarousel } from "@/components/product-image-carousel";
+import { PRODUCTS, formatCOP, WHATSAPP, type Product } from "@/data/products";
 
 type CartItem = { product: Product; qty: number };
 
-const formatCOP = (n: number) => `$${n.toLocaleString("es-CO")}`;
-
-export const Route = createFileRoute("/productos")({
+export const Route = createFileRoute("/productos/")({
   head: () => ({
     meta: [
       { title: "Productos · Piwistore" },
@@ -162,15 +88,29 @@ function Productos() {
           <div className="mt-10 grid grid-cols-1 place-items-center gap-8 md:grid-cols-3">
             {PRODUCTS.map((p) => (
               <article key={p.id} className="product-card">
-                {p.images ? (
-                  <ProductImageCarousel images={p.images} alt={p.name} />
-                ) : (
-                  <div className="flex aspect-square items-center justify-center bg-secondary px-6 text-center">
-                    <span className="text-sm font-medium text-muted-foreground">
-                      {p.name}
-                    </span>
-                  </div>
-                )}
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setSelectedProduct(p)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedProduct(p);
+                    }
+                  }}
+                  aria-label={`Vista rápida de ${p.name}`}
+                  className="block w-full cursor-zoom-in"
+                >
+                  {p.images ? (
+                    <ProductImageCarousel images={p.images} alt={p.name} />
+                  ) : (
+                    <div className="flex aspect-square items-center justify-center bg-secondary px-6 text-center">
+                      <span className="text-sm font-medium text-muted-foreground">
+                        {p.name}
+                      </span>
+                    </div>
+                  )}
+                </div>
                 <div className="p-5">
                   <h3 className="font-heading text-lg font-bold text-foreground">
                     {p.name}
@@ -180,12 +120,13 @@ function Productos() {
                     {formatCOP(p.price)} COP
                   </p>
                   <div className="mt-4 space-y-2">
-                    <button
-                      onClick={() => setSelectedProduct(p)}
-                      className="btn-outline-blue w-full text-sm"
+                    <Link
+                      to="/productos/$productId"
+                      params={{ productId: p.id }}
+                      className="btn-outline-blue block w-full text-center text-sm"
                     >
                       👁 Ver detalles
-                    </button>
+                    </Link>
                     <div className="grid grid-cols-2 gap-2">
                       <button onClick={() => addToCart(p)} className="btn-outline-blue text-sm">
                         🛒 Agregar
@@ -314,7 +255,7 @@ function Productos() {
         </div>
       </aside>
 
-      {/* Product detail modal */}
+      {/* Product quick-view modal */}
       {selectedProduct && (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center bg-brand-navy/60 p-4"
@@ -371,6 +312,14 @@ function Productos() {
                   💬 Pedir ya
                 </a>
               </div>
+              <Link
+                to="/productos/$productId"
+                params={{ productId: selectedProduct.id }}
+                onClick={() => setSelectedProduct(null)}
+                className="mt-3 block text-center text-sm text-muted-foreground underline-offset-2 hover:text-primary hover:underline"
+              >
+                Ver página completa del producto →
+              </Link>
             </div>
           </div>
         </div>
