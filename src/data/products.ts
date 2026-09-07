@@ -11,6 +11,10 @@ import lavapatasImg2 from "@/assets/material visual/PRODUCTOS/02/lavapatas2.jpg"
 import lavapatasImg3 from "@/assets/material visual/PRODUCTOS/02/lavapatas3.jpg";
 import camaImg1 from "@/assets/material visual/PRODUCTOS/03/cama1-1.webp";
 import camaImg2 from "@/assets/material visual/PRODUCTOS/03/cama1-2.webp";
+import filtrosImg1 from "@/assets/material visual/PRODUCTOS/04/filtros1.png";
+import filtrosImg2 from "@/assets/material visual/PRODUCTOS/04/filtros2.png";
+import filtrosImg3 from "@/assets/material visual/PRODUCTOS/04/filtros3.png";
+import filtrosImg4 from "@/assets/material visual/PRODUCTOS/04/filtros4.png";
 
 export const WHATSAPP = "573022409193";
 
@@ -87,6 +91,24 @@ export const PRODUCTS: Product[] = [
     waLink:
       "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Nube%20de%20Sue%C3%B1os%20Cama%20para%20Mascota%20%F0%9F%90%BE%20Precio%3A%20%2469.900",
     images: [camaImg1, camaImg2],
+  },
+  {
+    id: "filtros-cuadrado",
+    name: "Set X4 Filtros de Repuesto para Fuente de Agua (Cuadrado)",
+    shortName: "Filtros Fuente Cuadrada",
+    description:
+      "Cantidad de filtros: 4 · Fabricado en carbón activado y algodón · Purifica y elimina malos olores · Compatible con fuente cuadrada",
+    features: [
+      "Cantidad de filtros: 4",
+      "Fabricado en carbón activado, algodón",
+      "Elimina olores, pelos y residuos del agua",
+      "Mantiene el agua fresca y purificada",
+      "Fácil instalación, compatible con fuente cuadrada",
+    ],
+    price: 16900,
+    waLink:
+      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Set%20X4%20Filtros%20de%20repuesto%20para%20fuente%20de%20agua%20(Cuadrado)%20%F0%9F%90%BE%20Precio%3A%20%2416.900",
+    images: [filtrosImg1, filtrosImg2, filtrosImg3, filtrosImg4],
   },
 ];
 
