@@ -43,9 +43,9 @@ export const PRODUCTS: Product[] = [
       "Silenciosa y fácil de limpiar",
       "Ideal para gatos y perros",
     ],
-    price: 70900,
+    price: 65900,
     waLink:
-      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Fuente%20Autom%C3%A1tica%20de%20Agua%20para%20Mascotas%20%F0%9F%90%BE%20Precio%3A%20%2470.900",
+      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Fuente%20Autom%C3%A1tica%20de%20Agua%20para%20Mascotas%20%F0%9F%90%BE%20Precio%3A%20%2465.900",
     images: [
       fuenteImg1,
       fuenteImg2,
