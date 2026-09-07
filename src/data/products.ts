@@ -87,9 +87,9 @@ export const PRODUCTS: Product[] = [
       "50cm de diámetro",
       "Descanso cómodo y seguro",
     ],
-    price: 69900,
+    price: 55000,
     waLink:
-      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Nube%20de%20Sue%C3%B1os%20Cama%20para%20Mascota%20%F0%9F%90%BE%20Precio%3A%20%2469.900",
+      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Nube%20de%20Sue%C3%B1os%20Cama%20para%20Mascota%20%F0%9F%90%BE%20Precio%3A%20%2459.900",
     images: [camaImg1, camaImg2],
   },
   {
