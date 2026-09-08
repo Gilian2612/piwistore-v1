@@ -19,6 +19,11 @@ import frisbeeImg1 from "@/assets/material visual/PRODUCTOS/05/frisbee1.png";
 import frisbeeImg2 from "@/assets/material visual/PRODUCTOS/05/frisbee2.png";
 import frisbeeImg3 from "@/assets/material visual/PRODUCTOS/05/frisbee3.png";
 import frisbeeImg4 from "@/assets/material visual/PRODUCTOS/05/frisbee4.png";
+import flexicamaImg1 from "@/assets/material visual/PRODUCTOS/06/flexicama1.webp";
+import flexicamaImg2 from "@/assets/material visual/PRODUCTOS/06/flexicama2.webp";
+import flexicamaImg3 from "@/assets/material visual/PRODUCTOS/06/flexicama3.webp";
+import flexicamaImg4 from "@/assets/material visual/PRODUCTOS/06/flexicama4.webp";
+import flexicamaImg5 from "@/assets/material visual/PRODUCTOS/06/flexicama5.webp";
 
 export const WHATSAPP = "573022409193";
 
@@ -131,6 +136,25 @@ export const PRODUCTS: Product[] = [
     waLink:
       "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Frisbee%2017cm%20para%20Perro%20%F0%9F%90%BE%20Precio%3A%20%249.900",
     images: [frisbeeImg1, frisbeeImg2, frisbeeImg3, frisbeeImg4],
+  },
+  {
+    id: "flexicama",
+    name: "Flexicama para Gatos",
+    shortName: "Flexicama para Gatos",
+    description:
+      "Diseño ajustable con brazos regulables · Soporta hasta 18kg · Estructura en madera de doble enchape · Tela de lona/algodón lavable · Colores amarillo y azul",
+    features: [
+      "Medidas: 47cm x 39,6cm x 21,5cm",
+      "Colores disponibles: amarillo y azul",
+      "Material: tela de lona/algodón con soporte de madera de doble enchape",
+      "Diseño con brazos ajustables que se adaptan a cualquier rincón",
+      "Fácil de lavar y muy duradera",
+      "Soporta hasta 18kg de forma segura y estable",
+    ],
+    price: 65900,
+    waLink:
+      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20la%20Flexicama%20para%20Gatos%20%F0%9F%90%BE%20Precio%3A%20%2465.900",
+    images: [flexicamaImg1, flexicamaImg2, flexicamaImg3, flexicamaImg4, flexicamaImg5],
   },
 ];
 
