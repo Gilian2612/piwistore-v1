@@ -15,6 +15,10 @@ import filtrosImg1 from "@/assets/material visual/PRODUCTOS/04/filtros1.png";
 import filtrosImg2 from "@/assets/material visual/PRODUCTOS/04/filtros2.png";
 import filtrosImg3 from "@/assets/material visual/PRODUCTOS/04/filtros3.png";
 import filtrosImg4 from "@/assets/material visual/PRODUCTOS/04/filtros4.png";
+import frisbeeImg1 from "@/assets/material visual/PRODUCTOS/05/frisbee1.png";
+import frisbeeImg2 from "@/assets/material visual/PRODUCTOS/05/frisbee2.png";
+import frisbeeImg3 from "@/assets/material visual/PRODUCTOS/05/frisbee3.png";
+import frisbeeImg4 from "@/assets/material visual/PRODUCTOS/05/frisbee4.png";
 
 export const WHATSAPP = "573022409193";
 
@@ -109,6 +113,24 @@ export const PRODUCTS: Product[] = [
     waLink:
       "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Set%20X4%20Filtros%20de%20repuesto%20para%20fuente%20de%20agua%20(Cuadrado)%20%F0%9F%90%BE%20Precio%3A%20%2416.900",
     images: [filtrosImg1, filtrosImg2, filtrosImg3, filtrosImg4],
+  },
+  {
+    id: "frisbee",
+    name: "Frisbee 17cm para Perro",
+    shortName: "Frisbee para Perro",
+    description:
+      "Diámetro 17cm · Material flexible y resistente a mordidas · Flota en el agua · Ideal para jugar en parque, playa o piscina",
+    features: [
+      "Diámetro de 17cm, tamaño ideal para razas pequeñas y medianas",
+      "Material flexible y resistente a mordidas",
+      "Flota en el agua, perfecto para juegos acuáticos",
+      "Bordes suaves que cuidan la boca de tu mascota",
+      "Ligero y fácil de lanzar para largas sesiones de juego",
+    ],
+    price: 9900,
+    waLink:
+      "https://wa.me/573022409193?text=Hola%2C%20quiero%20pedir%20el%20Frisbee%2017cm%20para%20Perro%20%F0%9F%90%BE%20Precio%3A%20%249.900",
+    images: [frisbeeImg1, frisbeeImg2, frisbeeImg3, frisbeeImg4],
   },
 ];
 
